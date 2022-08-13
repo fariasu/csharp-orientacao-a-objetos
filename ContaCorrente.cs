@@ -7,38 +7,13 @@ namespace bytebank
 
         public Cliente Titular { get; set; }
         public string Nome_Agencia { get; set; }
-        public int Numero_agencia
-        {
-            get;
-
-            set;
-            
-
-        }
-        public string Conta
-        {
-            get;
-            set;
-        }
-
+        public int Numero_agencia { get; set; }
+        public string Conta { get; set; }
         private double saldo;
         public double Saldo
         {
-            get
-            {
-                return saldo;
-            }
-            set
-            {
-                if (value < 0)
-                {
-                    return;
-                }
-                else
-                {
-                    saldo = value;
-                }
-            }
+            get { return saldo;}
+            set { if (value < 0) { return; } else { saldo = value; }}
         }
 
         public bool Sacar(double valor)

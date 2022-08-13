@@ -41,10 +41,14 @@ Console.WriteLine("Boas Vindas ao seu banco, ByteBank!\n");
 
 Cliente sarah = new Cliente();
 sarah.Nome = "Sarah Silva";
+sarah.Cpf = "023991039203";
+sarah.Profissao = "Programador C#";
 
 ContaCorrente conta4 = new ContaCorrente();
 conta4.Saldo = 100;
 conta4.Titular = sarah;
 Console.WriteLine(conta4.Saldo);
+Console.WriteLine(conta4.Titular.Cpf);
+Console.WriteLine(conta4.Titular.Profissao);
 
 Console.ReadKey();
