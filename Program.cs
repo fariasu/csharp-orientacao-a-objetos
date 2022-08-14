@@ -3,52 +3,62 @@ using bytebank.Titular;
 
 Console.WriteLine("Boas Vindas ao seu banco, ByteBank!\n");
 
-//ContaCorrente conta1 = new ContaCorrente();
-//conta1.titular = "André Silva";
-//conta1.conta = "110123-X";
-//conta1.numero_agencia = 123;
-//conta1.nome_agencia = "Agência Central";
-//conta1.saldo = 100;
+Console.WriteLine(@"Escolha uma opção: 
+1 - Criar Conta.
+2 - Ver Conta.
+");
 
-//ContaCorrente conta2 = new ContaCorrente();
-//conta2.titular = "Amanda Nogueira";
-//conta2.conta = "10106-X";
-//conta2.numero_agencia = 321;
-//conta2.nome_agencia = "Agência Central";
-//conta2.saldo = 100;
+var opcao = Console.ReadLine();
 
-//Console.WriteLine("Saldo da Amanda pré-transferência: " + conta2.saldo);
-//Console.WriteLine("Saldo do André  pré- Transferência: " + conta1.saldo);
-//bool transferencia = conta1.Transferir(50, conta2);
-//Console.WriteLine("Transferência realizada com sucesso? " + transferencia);
-//Console.WriteLine("Saldo da Amanda pós-transferência: " + conta2.saldo);
-//Console.WriteLine("Saldo do André  pós- Transferência: " + conta1.saldo);
+switch (opcao)
+{
+    case "1":
+        Console.WriteLine("Digite seu nome: \n");
+        var nome = Console.ReadLine();
+        Console.WriteLine("Digite seu CPF: \n");
+        var cpf = Console.ReadLine();
+        Console.WriteLine("Digite sua profissão: \n");
+        var profissao = Console.ReadLine();
 
-//ContaCorrente conta3 = new ContaCorrente();
-//conta3.titular = new Cliente();
-//conta3.titular.nome = "André Silva";
-//conta3.titular.profissao = "Programador C#";
-//conta3.numero_agencia = 35;
-//conta3.nome_agencia = "Agência Central";
-//conta3.saldo = 100;
+        Console.WriteLine(@"Escolha uma agência: 
+        1 - Agência Central.
+        2 - Segunda Agência.
+        ");
+        var agencia = Console.ReadLine();
+        
+        Random rd = new Random();
+        var first = rd.Next(00000, 99999);
+        var second = rd.Next(0, 9);
 
-//Console.WriteLine(conta3.titular.nome);
+        var conta = $"{first}-{second}";
+        int numero_agencia = second;
 
-//if (conta3.titular == null)
-//{
-//    Console.WriteLine("O campo titular está nulo.");
-//}
+        CriarConta(agencia, conta, numero_agencia);
 
-Cliente sarah = new Cliente();
-sarah.Nome = "Sarah Silva";
-sarah.Cpf = "023991039203";
-sarah.Profissao = "Programador C#";
+        Console.WriteLine($@"Sua conta foi criada com sucesso!
+        Aqui estão suas informações;
+        Cliente {nome}
+        CPF {cpf}
+        Agência {agencia}
+        Conta {conta}
+        Número da Agência {numero_agencia}
+        Obrigado por fazer parte do nosso banco!
+        ");
 
-ContaCorrente conta4 = new ContaCorrente();
-conta4.Saldo = 100;
-conta4.Titular = sarah;
-Console.WriteLine(conta4.Saldo);
-Console.WriteLine(conta4.Titular.Cpf);
-Console.WriteLine(conta4.Titular.Profissao);
+        break;
+    case "2":
+        Console.WriteLine("Ver Conta");
+        break;
+    default:
+        Console.WriteLine("Opção inválida");
+        break;
+}
+
+void CriarConta(string agencia, string conta, int numero_agencia)
+{
+    Cliente titular = new Cliente();
+    Console.WriteLine(titular);
+    ContaCorrente conta_corrente = new ContaCorrente(titular, agencia, conta, numero_agencia);
+}
 
 Console.ReadKey();

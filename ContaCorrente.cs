@@ -59,6 +59,14 @@ namespace bytebank
                 return true;
             }
         }
+        
+        public ContaCorrente(Cliente titular, string nome_agencia, string conta, int numero_agencia){
+            this.Titular = titular;
+            this.Nome_Agencia = nome_agencia;
+            this.Conta = conta;
+            this.Numero_agencia = numero_agencia;
+        }
+
 
        
     }
